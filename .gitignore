@@ -1,5 +1,5 @@
 .txt
 __pscache__
 migrations
-.sqlite3
+db.sqlite3
 
