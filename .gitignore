@@ -1,0 +1,5 @@
+.txt
+__pscache__
+migrations
+db.sqlite3
+
