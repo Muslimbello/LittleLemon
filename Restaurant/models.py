@@ -5,7 +5,7 @@ class Booking(models.Model):
 
 	name = models.CharField(max_length=225)
 	no_of_guests = models.IntegerField()
-	BookingDate = models.DateTimeField()
+	BookingDate = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return self.name

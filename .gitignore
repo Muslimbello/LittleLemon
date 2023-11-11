@@ -1,5 +1,5 @@
 .txt
-__pscache__
+LittleLemon/__pycache__
 migrations
 db.sqlite3
 LittleLemon/settings.py
