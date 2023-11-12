@@ -6,6 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['url', 'username', 'email', 'groups']
 class MenuSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Menu
         fields ='__all__'
