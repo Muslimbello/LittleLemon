@@ -10,25 +10,29 @@ from rest_framework import response
 
 from .serializer import MenuSerializer, BookingSerializer, UserSerializer
 from .models import Booking, Menu
+from .permissions import IsAdminUserReadOnly
+
 
 class MenuViewSet(viewsets.ModelViewSet):
-	queryset = Menu.objects.all()
-	serializer_class = MenuSerializer
-	permission_classes = [permissions.IsAuthenticated]
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class BookingViewSet(viewsets.ModelViewSet):
-	queryset = Booking.objects.all()
-	serializer_class = BookingSerializer
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]
+
 
 class UserViewSet(viewsets.ModelViewSet):
-   queryset = User.objects.all()
-   serializer_class = UserSerializer
-   permission_classes = [permissions.IsAuthenticated]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 @api_view()
 @permission_classes([IsAuthenticated])
 # @authentication_classes([TokenAuthentication])
 def msg(request):
-	return response({"message":"This view is protected"})
+    return response({"message": "This view is protected"})
