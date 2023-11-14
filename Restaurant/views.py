@@ -27,16 +27,10 @@ class BookingViewSet(viewsets.ModelViewSet):
     throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
 
-class UserView(generics.ListCreateAPIView):
+class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAdminUserReadOnly]
-
-
-class UserView_details(generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAdminUserReadOnly]
+    permission_classes = [permissions.IsAdminUser]
 
 
 def homePage(request):

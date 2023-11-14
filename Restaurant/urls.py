@@ -9,11 +9,10 @@ router = DefaultRouter()
 
 router.register("menu", views.MenuViewSet, basename="Menu")
 router.register("booking", views.BookingViewSet, basename="Booking")
+router.register("user", views.UserViewSet, basename="user")
 
 urlpatterns = [
     path("api/", include(router.urls)),
     path("api/login/", obtain_auth_token),
-    path("api/user/", views.UserView.as_view(), name="all-users"),
-    path("api/user-details/", views.UserView_details.as_view(), name="user-info"),
-    path("home", views.homePage, name="home"),
+    path("home/", views.homePage, name="home"),
 ]
