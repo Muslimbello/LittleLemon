@@ -11,10 +11,9 @@ router.register("menu", views.MenuViewSet, basename="Menu")
 router.register("booking", views.BookingViewSet, basename="Booking")
 
 urlpatterns = [
-    path("", include(router.urls)),
-    path("message/", views.msg),
-    path("login/", obtain_auth_token),
-    path("user/", views.UserView.as_view(), name="all-users"),
-    path("user-details/", views.UserView_details.as_view(), name="user-info"),
+    path("api/", include(router.urls)),
+    path("api/login/", obtain_auth_token),
+    path("api/user/", views.UserView.as_view(), name="all-users"),
+    path("api/user-details/", views.UserView_details.as_view(), name="user-info"),
     path("home", views.homePage, name="home"),
 ]

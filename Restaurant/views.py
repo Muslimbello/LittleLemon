@@ -41,10 +41,5 @@ class UserView_details(generics.RetrieveUpdateDestroyAPIView):
 
 @api_view()
 @permission_classes([IsAuthenticated])
-# @authentication_classes([TokenAuthentication])
-def msg(request):
-    return response({"message": "This view is protected"})
-
-
 def homePage(request):
     return render(request, "index.html", {})
