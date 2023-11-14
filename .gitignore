@@ -1,4 +1,5 @@
 .txt
-LittleLemon/__pycache__
+.env
+
 db.sqlite3
-LittleLemon/settings.py
+

@@ -7,28 +7,36 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import response
-
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from .serializer import MenuSerializer, BookingSerializer, UserSerializer
 from .models import Booking, Menu
 from .permissions import IsAdminUserReadOnly
+from rest_framework import generics
 
 
 class MenuViewSet(viewsets.ModelViewSet):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAdminUserReadOnly]
+
+
+class UserView_details(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminUserReadOnly]
 
 
 @api_view()
