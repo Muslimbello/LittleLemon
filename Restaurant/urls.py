@@ -16,4 +16,5 @@ urlpatterns = [
     path("login/", obtain_auth_token),
     path("user/", views.UserView.as_view(), name="all-users"),
     path("user-details/", views.UserView_details.as_view(), name="user-info"),
+    path("home", views.homePage, name="home"),
 ]
