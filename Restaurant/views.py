@@ -39,7 +39,5 @@ class UserView_details(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAdminUserReadOnly]
 
 
-@api_view()
-@permission_classes([IsAuthenticated])
 def homePage(request):
     return render(request, "index.html", {})
